@@ -64,7 +64,7 @@ var table = document.getElementById('bitches');  // Ôóíêöèÿ îòñëåæ�
  // Ñòàðò èãðû
  function Start()
  {
-	 var S=prompt("What is your name?","");
+	 var S=prompt("Как Вас зовут?","");
 	 isStart = true; //Èãðà çàïóùåíà
 	 PlaySnd('sounds/reload.mp3'); // Çàðÿæàåì îðóæèå
 	 ammo_start = 40; // Äàåì ñòàðòîâûé áîåçàïàñ
@@ -75,8 +75,8 @@ var table = document.getElementById('bitches');  // Ôóíêöèÿ îòñëåæ�
  
  function infoUpdate()
  {
-	document.getElementById('killCount').innerHTML = 'Ammo:' + killCount; 
-	document.getElementById('ammo_count').innerHTML = 'Kills:' + ammo_start;
+	document.getElementById('killCount').innerHTML = 'Убито бомжей:' + killCount; 
+	document.getElementById('ammo_count').innerHTML = 'Боеприпасы:' + ammo_start;
     if(ammo_start == 0)
 	{
 		PlaySnd('sounds/no_ammo.wav');
