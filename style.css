@@ -57,7 +57,7 @@ body
 #bitches
 {
 	margin-top:10px;
-	margin-left:100px;
+	margin-left:50px;
 	height:330px;
 	width:330px;
 	float:left;
@@ -77,7 +77,7 @@ body
 .menu
 {
 	margin-top:50px;
-	margin-left:150px;
+	margin-left:100px;
 	height:150px;
 	width:150px;
 	float:left;
@@ -92,5 +92,5 @@ body
   outline: none; 
   cursor:pointer;
 } 
-.menu a:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
-.menu a:active { background: rgb(152,15,0); } /* при нажатии */
+.menu a:hover { background: rgb(232,95,76); } /* ГЇГ°ГЁ Г­Г ГўГҐГ¤ГҐГ­ГЁГЁ ГЄГіГ°Г±Г®Г°Г  Г¬Г»ГёГЄГЁ */
+.menu a:active { background: rgb(152,15,0); } /* ГЇГ°ГЁ Г­Г Г¦Г ГІГЁГЁ */
