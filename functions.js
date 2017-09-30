@@ -30,7 +30,7 @@ var table = document.getElementById('bitches');  // Функция отслеж�
 		{
 		killCount++; // Убили бомжа
 		Shot();  
-		PlaySnd('sounds/death.wav'); 
+		PlaySnd('sounds/death.mp3'); 
 		target.style.backgroundImage = 'url(images/none.png)';
 		}
 	}
@@ -66,7 +66,7 @@ var table = document.getElementById('bitches');  // Функция отслеж�
  // Старт игры
  function Start()
  {
-	 playerName=prompt("What is your name?","");
+	 playerName=prompt("Как вас зовут?","");
 	 isStart = true; //Игра запущена
 	 PlaySnd('sounds/reload.mp3'); // Заряжаем оружие
 	 ammo_start = 10; // Даем стартовый боезапас
@@ -135,8 +135,7 @@ function Update()
  
  function closeStat()
  {
-	 alert("gesg");
-		var modal=document.getElementById('win1');
-		modal.style.display = 'none';
+	var modal=document.getElementById('win1');
+	modal.style.display = 'none';
 	deleteBums()
  }
