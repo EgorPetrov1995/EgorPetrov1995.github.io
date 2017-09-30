@@ -79,7 +79,7 @@ var table = document.getElementById('bitches');  // Ôóíêöèÿ îòñëåæ�
 	document.getElementById('ammo_count').innerHTML = 'Боеприпасы:' + ammo_start;
     if(ammo_start == 0)
 	{
-		PlaySnd('sounds/no_ammo.wav');
+		PlaySnd('sounds/no_ammo.mp3');
 		isStart = false;
 	}
  }
