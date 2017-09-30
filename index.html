@@ -1,13 +1,29 @@
 <html>
 <head>
-<link rel="shortcut icon" href="favico.ico" type="image/x-icon">
+ <link rel="shortcut icon" href="images/favico.ico" type="image/x-icon">
 <link rel="stylesheet" href="style.css">
-<title>Спаси Россию!</title>
+<title>Save to Russia!</title>
 <script src="spawn.js"></script>
 </head>
 <body>
 <div class="header"></div>
 <div class="content">
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <a href="#close" onclick="closeStat()" class="close"></a>
+                <h3>Кончились боеприпасы</h3>
+				
+                <div class="pl-left">
+                </div>
+                <p id="stat_shot"></p>
+				<p id="stat_kill"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="menu">
 <a onclick="Start()">Start!</a>
 </div>
@@ -24,8 +40,8 @@
 	</table>
 <script src="functions.js"></script>
 <div class="info">
-	<p id="ammo_count">Боеприпасы:</p> 
-	<p id="killCount">Убито бомжей:</p>
+	<p id="ammo_count">Ammo:</p> 
+	<p id="killCount">Kills:</p>
 </div>
 
 </body>
