@@ -58,7 +58,7 @@ var table = document.getElementById('bitches');  // Ôóíêöèÿ îòñëåæ�
  {
 	 var snd = new Audio();
 	 snd.src = path;
-	 snd.autoplay = true;
+	 snd.play();
  }
  
  // Ñòàðò èãðû
