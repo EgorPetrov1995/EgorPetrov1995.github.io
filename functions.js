@@ -1,34 +1,36 @@
 /**************************************************************************************************************/
 
-/***********************************    Ôóíêöèè äëÿ èãðû "Óáåé áîìæà"    **************************************/
+/***********************************    Функции для игры "Убей бомжа"    **************************************/
 
 /* 30.09.2017 */
 /**************************************************************************************************************/
-var ammo_start; // Ñòàðòîâîå êîëè÷åñòâî áîåïðèïàñîâ
+var ammo_start; // Стартовое количество боеприпасов
 var killCount;
 var isStart = false;
 
-function getRand(min, max)  // Ãåíåðàöèÿ ñëó÷àéíîãî ÷èñëà
+var playerName;
+
+function getRand(min, max)  // Генерация случайного числа
 {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
   
 
-var table = document.getElementById('bitches');  // Ôóíêöèÿ îòñëåæèâàíèÿ íàæàòèÿ
+var table = document.getElementById('bitches');  // Функция отслеживания нажатия
 	
 	document.getElementById('bitches').onclick = function(e) 
-	{ // Âåøàåì îáðàáîò÷èê
+	{ // Вешаем обработчик
 
-	var event = e || window.event, // Ïîëó÷àåì event.target 
+	var event = e || window.event, // Получаем event.target 
       target = event.CurrentTarget || event.srcElement; 
 	if( isStart == true)
 	{
-	if (target.tagName == 'IMG' )
-	{ //Ïðîâåðÿåì, ïîïàëè â áîìæà èëè íåò
+	if (target.tagName == 'IMG' && target.style.backgroundImage != 'url(images/none.png)' )
+	{ //Проверяем, попали в бомжа или нет
 		{
-		killCount++; // Óáèëè áîìæà
+		killCount++; // Убили бомжа
 		Shot();  
-		PlaySnd('sounds/death.mp3'); 
+		PlaySnd('sounds/death.wav'); 
 		target.style.backgroundImage = 'url(images/none.png)';
 		}
 	}
@@ -44,43 +46,97 @@ var table = document.getElementById('bitches');  // Ôóíêöèÿ îòñëåæ�
  {
 	 if (isStart == true)
 	 {
-			PlaySnd('sounds/shot.mp3'); // Âîñïðîèçâîäèì çâóê âûñòðåëà
-			ammo_start--; // Óáèðàåì ïàòðîí
-			infoUpdate(); // Îáíîâëÿåì èíôîðìàöèþ
+			PlaySnd('sounds/shot.mp3'); // Воспроизводим звук выстрела
+			ammo_start--; // Убираем патрон
+			infoUpdate(); // Обновляем информацию
 	 }
 	 else
 	 {
-		 alert("No ammo!");
+		 alert("Click to Start!");
 	 }
  }
  
- function PlaySnd(path)  // Ïðîèãðûâàíèå çâóêà (path) - ïóòü ê ôàéëó
+ function PlaySnd(path)  // Проигрывание звука (path) - путь к файлу
  {
 	 var snd = new Audio();
 	 snd.src = path;
 	 snd.play();
  }
  
- // Ñòàðò èãðû
+ // Старт игры
  function Start()
  {
-	 var S=prompt("Как Вас зовут?","");
-	 isStart = true; //Èãðà çàïóùåíà
-	 PlaySnd('sounds/reload.mp3'); // Çàðÿæàåì îðóæèå
-	 ammo_start = 10; // Äàåì ñòàðòîâûé áîåçàïàñ
-	 killCount = 0; // Îáíóëÿåì ñ÷¸ò÷èê óáèòûõ áîìæåé
-	 infoUpdate() // Îáíîâëÿåì èíôîðìàöèþ
-	 CreateBums(); // Ñîçäàåì áîìæåé
+	 playerName=prompt("What is your name?","");
+	 isStart = true; //Игра запущена
+	 PlaySnd('sounds/reload.mp3'); // Заряжаем оружие
+	 ammo_start = 10; // Даем стартовый боезапас
+	 killCount = 0; // Обнуляем счётчик убитых бомжей
+	 infoUpdate() // Обновляем информацию
+	 CreateBums(); // Создаем бомжей
  }
  
  function infoUpdate()
  {
-	document.getElementById('killCount').innerHTML = 'Убито бомжей:' + killCount; 
-	document.getElementById('ammo_count').innerHTML = 'Боеприпасы:' + ammo_start;
+	document.getElementById('killCount').innerHTML = 'Kill bums:' + killCount; 
+	document.getElementById('ammo_count').innerHTML = 'Ammo:' + ammo_start;
     if(ammo_start == 0)
 	{
-		PlaySnd('sounds/no_ammo.mp3');
+		PlaySnd('sounds/no_ammo.wav');
 		isStart = false;
+		
+		var modal=document.getElementById('win1');
+		modal.style.display = 'block';
+		document.getElementById('stat_shot').innerHTML = playerName.toString(); 
+		document.getElementById('stat_kill').innerHTML = 'Kill bums:' + killCount; 
 	}
  }
  
+ 
+ function getRand(min, max)  // Генерация слчайного числа
+{
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function CreateBums()
+{
+	if(isStart == true)
+	{
+	deleteBums();
+	var amountBums = getRand (3 ,5);
+	
+	for( var i = 0; i < amountBums ; i++ )
+	{
+		var back = getRand(1,9);	// Генерация номера бака
+		rrr=document.getElementsByName('bums');
+		//rrr[back].style.display = 'block';
+		
+		rrr[back].style.backgroundImage = 'url(images/bum'+getRand(1,3)+'.png)';
+	}
+	Update();
+	}
+}
+
+
+function deleteBums()
+{
+	for( var j = 0; j < 9 ; j++ )
+	{
+		bums=document.getElementsByName('bums');
+		bums[j].style.backgroundImage = 'url()'
+	}
+} 
+
+
+function Update()
+{
+		setInterval(CreateBums, 4000);
+}
+ 
+ 
+ function closeStat()
+ {
+	 alert("gesg");
+		var modal=document.getElementById('win1');
+		modal.style.display = 'none';
+	deleteBums()
+ }
