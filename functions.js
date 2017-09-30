@@ -28,7 +28,7 @@ var table = document.getElementById('bitches');  // Ôóíêöèÿ îòñëåæ�
 		{
 		killCount++; // Óáèëè áîìæà
 		Shot();  
-		PlaySnd('sounds/death.wav'); 
+		PlaySnd('sounds/death.mp3'); 
 		target.style.backgroundImage = 'url(images/none.png)';
 		}
 	}
